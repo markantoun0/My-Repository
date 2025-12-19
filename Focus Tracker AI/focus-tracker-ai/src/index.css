@@ -1,0 +1,39 @@
+
+:root {
+  font-family: "Inter", "SF Pro Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #0f172a;
+  background-color: #f7f8fb;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f7f8fb;
+  color: #0f172a;
+}
+
+a {
+  font-weight: 600;
+  color: #0ea5e9;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+button {
+  font-family: inherit;
+}
