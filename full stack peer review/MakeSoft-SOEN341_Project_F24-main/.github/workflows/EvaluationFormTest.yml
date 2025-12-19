@@ -1,0 +1,48 @@
+name: Evaluation Form Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sign-up-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: PeerReview
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      # Node.js Setup for Jest Tests
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install JavaScript dependencies
+        run: |
+          cd MakeSoftReact/makesoftreact  
+          npm install  
+
+      - name: Run Jest tests
+        run: |
+          cd MakeSoftReact/makesoftreact/src  
+          npx jest evaluationForm.test.js
